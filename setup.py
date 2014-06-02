@@ -2,11 +2,10 @@ import ez_setup
 ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 import sys
-import askbot_log
 
 setup(
     name = "askbot_log",
-    version = askbot_log.__version__,#remember to manually set this correctly
+    version = '0.0.1',
     description = 'Log post activity of watched users',
     packages = find_packages(),
     author = 'Evgeny.Fadeev',
