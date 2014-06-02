@@ -5,4 +5,5 @@ from askbot.models import User
 class UserLog(models.Model):
     user = models.ForeignKey(User)
     ip_addr = models.GenericIPAddressField()
+    url = models.TextField()
     data = PickledObjectField()
