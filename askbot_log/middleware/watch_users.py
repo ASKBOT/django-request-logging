@@ -9,6 +9,7 @@ class LogActivityOfWatchedUsers(object):
             log = UserLog()
             log.ip_addr = request.META['REMOTE_ADDR']
             log.user = user
+            log.url = request.path
             data = request.POST.copy()
             data.pop('password', None)
             data.pop('password1', None)
