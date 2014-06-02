@@ -7,6 +7,7 @@ class UserLogAdmin(admin.ModelAdmin):
     readonly_fields = ('user', 'ip_addr', 'url', 'data')
 
     def data(self, instance):
+        output = ''
         for key in instance.data:
             row = '<tr><td>%s</td><td>%s</td></tr>' % (key, instance.data['key'])
             output += row
