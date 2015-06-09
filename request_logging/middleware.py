@@ -5,15 +5,22 @@ from .conf import settings
 from .utils import clean_dict, replace_dict_values, import_attribute
 from django.conf import settings as django_settings
 import inspect
+import logging
+
+LOG = logging.getLogger(__name__)
 
 class RequestLoggingMiddleware(object):
     def process_request(self, request):
-        for test_filter in self.get_filters():
-            callable_filter = self.get_callable_filter(test_filter)
-            filter_name = self.get_filter_name(test_filter)
-            if callable_filter(request):
-                self.log_request(request, filter_name)
-                return
+        try:
+            for test_filter in self.get_filters():
+                callable_filter = self.get_callable_filter(test_filter)
+                filter_name = self.get_filter_name(test_filter)
+                if callable_filter(request):
+                    self.log_request(request, filter_name)
+                    return
+        except Exception, e:
+            msg = u'exception in the request logging {}'.format(unicode(e))
+            LOG.critical(msg.encode('utf-8'))
 
     @classmethod 
     def get_filters(cls):
