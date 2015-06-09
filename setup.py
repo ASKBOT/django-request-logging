@@ -4,9 +4,9 @@ from setuptools import setup, find_packages
 import sys
 
 setup(
-    name = "askbot_log",
-    version = '0.0.1',
-    description = 'Log post activity of watched users',
+    name = "request_logging",
+    version = '0.1.0',
+    description = 'Log requests in the database for the diagrostic purposes',
     packages = find_packages(),
     author = 'Evgeny.Fadeev',
     author_email = 'evgeny.fadeev@gmail.com',
