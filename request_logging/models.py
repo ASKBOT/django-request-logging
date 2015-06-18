@@ -16,4 +16,5 @@ class RequestLog(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return u'%s %s %s' % (self.user.username, self.ip_addr, self.url)
+        username = self.user and self.user.username or None
+        return u'%s %s %s' % (username, self.ip_addr, self.url)
